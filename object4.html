@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        let members=["Hong","Hwang","Park","Choi","Kwon"];
+        let links = ["www.daum.net","www.naver.com","www.google.com"];
+        let tables = [{name:"최재영",age:20},
+                      {name:"민해주",age:30},
+                      {name:"허성준",age:40},
+                      {name:"김시무",age:50}
+        ]
+
+        $(document).ready(function(){
+            let ul = $('<ul />');
+            for(let i=0;i<members.length;i++){
+                ul.append($('<li />').attr('id','m_'+i).html(members[i]));
+            }
+            
+            
+            // let re = $('<ul />').append(
+            //     $("<li />").html('사과'),
+            //     $("<li />").html('오렌지'),
+            //     $("<li />").html('수박')
+            //     );
+            // console.log(re);
+             $('body').append(ul);
+
+             $("#m_0").css("background","red");
+
+
+            $(links).each(function(a,b,c){
+                console.log(a,b);
+                $('#linkresult1').append($('<a />').attr('href',b).html(b +"<br>"));
+            });
+
+            
+
+            $(tables).each(function(a,b){
+                $('#linkresult2').attr("border","1").append($('<tr />')
+                .append($('<td />').html(a+1))
+                .append($('<td />').html(b.age))
+                .append($('<td />').html(b.name))
+                .append($('<button />').html('클릭'))); 
+            })
+
+            $('button').click(function(){
+                console.log($(this).parent().remove());
+            });
+
+            let cl = $('#show').clone();
+            console.log(cl);    
+            $('#linkresult2').before(cl.css("background","yellow"));
+            
+            let c2 = $('#linkresult2').clone();
+            $('#show2').before(c2.css("background","yellow"));
+        });
+    </script>
+    
+
+</head>
+<body>
+    <!-- <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul> -->
+    <p id="linkresult1"></p>
+    <table id="linkresult2"></table><br>
+    
+    <p id="show">hello !!</p>
+
+    <p id="show2">hello !!</p>
+
+</body>
+</html>

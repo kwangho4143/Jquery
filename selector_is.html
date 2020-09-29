@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www/jQuery/selector_is.html</title>
+    <script scr="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#wrap p:hidden').css('display','blck');
+
+            let sVal = $('#zone1 :selected').val();
+            console.log(sVal);
+            $('#course').change(function(){
+                let tVal = $(this).val();
+                console.log(tVal);
+
+            })
+            let checks = $('#zone2 :checked');
+            for(let i=0;i<checks.length;i++){
+                console.log($('checked').eq(i).val());
+            }
+
+            $('zone3 input').change(function(){
+                $('#show')$(this).val();
+            })
+
+        });
+        
+    </script>
+</head>
+<body>
+  
+    <h1>선택자 is()</h1>
+    <div id="wrap">
+        <p>내용1</p>
+        <p style = "display: none;">내용2</p>
+        <p>내용3</p>
+    </div>
+
+    <form action="#">
+        <p id='zone1'>
+            <select name="course" id="course">
+                <option value="opt1">옵션1</option>
+                <option value="opt2" selected>옵션2</option>
+                <option value="opt3">옵션3</option>
+            </select>
+        </p>
+
+        <p id='zone'2>
+            <input type="checkbox" name='hobby' value='read'>독서
+            <input type="checkbox" name='hobby' value='cycle' checked>자전거
+            <input type="checkbox" name='hobby' value='mount' checked>등산
+        </p>
+        <p id="zone3">
+            <input type="radio" name="gender" value='male'>남성
+            <input type="radio" name="gender" value='female' checked>여성
+        </p>
+        <p id="show"></p>
+    </form>
+
+</body>
+</html>

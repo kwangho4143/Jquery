@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event.html</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let hello = $('<button />').html('Hello');
+            $('body').append(hello);
+
+            $('button').click(function (a) {
+                console.log(a)
+                //window.alert('one 클릭', a); // 경고창 띄우기
+                alert("자동실행되었습니다");
+            });
+            $('button').click();
+            //$('button').trigger('click');
+            $('button').off('click');
+            $('button').click();
+
+            $('button').mouseover(function () {
+                $(this).css('background', 'yellow');
+            });
+
+            $('button').on({
+                'mouseout': function () {
+                    $(this).css('background', '');
+                },
+                'dblclick': function () {
+                    window.alert('dbl 버튼이 클릭되었습니다.');
+                }
+            });
+
+            $('#iv').on({
+                'keydown': function (e) {
+                    console.log(e);
+                    if (e.keyCode == 13) {
+                        let ipv = $(this).val();
+                        $('#result').append($('<div />').addClass(ipv).html(ipv));
+                        $(this).val("");
+                    }
+                },
+                'focus':function() {
+                    $(this).css("background","red");
+                },
+                'blur': function(){
+                    $(this).css("background","");
+                }
+            });
+
+            $('#iv2').on({
+                'keydown': function (e) {
+                    if (e.keyCode == 13) {
+                        let v1 = $(this).val();
+                        $('#result').find($('.'+v1)).css("display", "none");
+                        $(this).val("");
+                    }
+                }
+            });
+
+            
+        });
+    </script>
+</head>
+
+<body>
+    값 : <input type="text" id="iv">
+    <input type="text" id="iv2">
+    <p id='result'></p>
+
+</body>
+
+</html>

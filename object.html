@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#demo").html("<b>hello World</b>");
+            $("#demo").append($("<div />").attr("id","myDiv").css("background","yellow").html("NICE")); // <div></div>
+            console.log($("#myDiv").html());
+            console.log("------------");
+            
+            console.log($("#sec_1").html());
+            //$("#sec_2").append($("#sec_1").html());
+            $("#sec_1").html(' <a href="https://www.daum.net">daum</a>');
+
+        });
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <h1><strong>객체조작및생성</strong></h1>
+    <section id="sec_1">
+        <h2><em>html()</em></h2>
+        <p>내용1</p>
+    
+    <br>
+    <br>
+    <br>
+    
+    
+    </section>
+    <section id="sec_2">
+        <h2><em>텍스트()</em></h2>
+        <p>내용2</p>
+    </section>    
+</body>
+</html>
