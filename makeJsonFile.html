@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="boot/data.js"></script>
+    <script>
+        //db(배열)에서 데이터를 읽어와서 json파일을 만드는 작업
+        $(document).ready(function () {
+            let coffeeDB = data;
+            let jsonData = "[";
+
+            $(coffeeDB).each(function (idx, obj) {
+                jsonData += "{\"alt\":\"" + obj.alt + "\"," +
+                    "\"category\":\"" + obj.category + "\"," +
+                    "\"content\":\"" + obj.content + "\"," +
+                    "\"image\":\"" + obj.image + "\"," +
+                    "\"item\":\"" + obj.item + "\"," +
+                    "\"item_no\":\"" + obj.item_no + "\"," +
+                    "\"link\":\"" + obj.link + "\"," +
+                    "\"price\":\"" + obj.price + "\",";
+                if (idx != coffeeDB.length - 1)
+                    jsonData += "\"star\":\"" + obj.star + "\"},";
+                else
+                    jsonData += "\"star\":\"" + obj.star + "\"}";
+            });
+            jsonData += "]";
+            console.log(jsonData);
+
+            $("#result").text(jsonData);
+
+        });
+    </script>
+</head>
+
+<body>
+    <p id="result"></p>
+</body>
+
+</html>

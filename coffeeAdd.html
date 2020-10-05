@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="boot/data.js"></script>
+    <script>
+        $(document).ready(function () {
+            for (let i = 0; i < 10; i++) {
+                data.pop();
+            }
+            console.log(data); //깂기져오는지 확인
+
+            
+            $("#coffeeInput").on('click', function (event) {
+                // $.ajax({
+                //     url: 'db에 값을 한건 입력하는 페이지.',
+                //     success: function(a,b){
+                //         //추가된 데이터에 대한 정보를 화면에 출력
+                //     },
+                //     error: function(a,b){
+                //         //에러에 대한 내용을 사용자에게 통보
+                //     }
+                // })
+                // 현재로는 불가
+                // 배열에 입력을 대신한다
+
+
+            });
+
+            
+            showData();
+        });
+
+        function showData() {
+            let fields = ["item_no", "item","category", "price", "star"];
+            let table = $("<table />").attr('border', '1px');
+            $(data).each(function (idx, obj) {
+                let tr = $('<tr />');
+                table.append(tr);
+                // $(fields).each(function(i,o){
+                //     tr.append($('<td />').html(obj[o]));
+                // });
+                // 위에와 같다.
+                for (field of fields) {
+                    tr.append($('<td />').html(obj[field]));
+                }
+            });
+
+            $("#showData").append(table);
+
+
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <form id="frm">
+        <table id="tbl" border="1">
+            <tr>
+                <td>item_no</td>
+                <td><input type="text" name="item_no"></td>
+            </tr>
+            <tr>
+                <td>item</td>
+                <td><input type="text" name="item"></td>
+            </tr>
+            <tr>
+                <td>content</td>
+                <td><input type="text" name="content"></td>
+            </tr>
+            <tr>
+                <td>price</td>
+                <td><input type="text" name="price"></td>
+            </tr>
+            <tr>
+                <td>image</td>
+                <td><input type="text" name="image"></td>
+            </tr>
+            <tr>
+                <td>star</td>
+                <td><input type="text" name="star"></td>
+            </tr>
+            <tr>
+                <td>category</td>
+                <td><input type="text" name="category"></td>
+            </tr>
+            <tr align="center">
+                <td colspan="2"><button id="coffeeInput">입력</button><button>취소</button></td>
+            </tr>
+        </table>
+    </form>
+    <div id="showData"></div>
+</body>
+
+</html>

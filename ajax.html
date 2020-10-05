@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery/ajax.html</title>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url:"mock.json",
+                type:'get',
+                dataType:"json",
+                success:function(a,b){
+                    console.log(a,b);
+                    let data = a;
+                    let ul = $('<ul />');
+                    for(let i=0;i<data.length;i++){
+                        ul.append($('<li />').html(data[i].id+" / "+data[i].first_name));
+
+                    }
+                    $("#show").append(ul);
+
+
+                    //테이블로 만들기
+                    let fields=["id","first_name","last_name","email","gender"];
+                    let table = $("<table />").attr('border','1px');
+                    $(data).each(function(idx,obj){
+                        let tr = $('<tr />');
+                        table.append(tr);
+                        // $(fields).each(function(i,o){
+                        //     tr.append($('<td />').html(obj[o]));
+                        // });
+                        // 위에와 같다.
+                        for(field of fields){
+                            tr.append($('<td />').html(obj[field]));
+                        }
+                    });
+                    $("#show").append(table);
+                    
+
+
+                },
+                error:function(a,b){
+                    console.log(a,b);
+                }      
+            });//post get방식 둘다 처리가능
+
+
+
+        });
+
+
+    </script>
+</head>
+<body>
+    <p id="show"></p>
+  
+</body>
+</html>
